@@ -1,0 +1,23 @@
+name: Pull Request Build & Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  upload-artifact:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create Artifact Directory
+        run: mkdir -p my-artifact
+
+      - name: Create Text File
+        run: echo "This is Anupamas01's text content." > artifact/anupamas01.txt
+
+      - name: Upload "anupamas01" Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: anupamas01
+          path: artifact
